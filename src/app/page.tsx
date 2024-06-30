@@ -1,7 +1,8 @@
-import Image from "next/image";
+import SearchEvent from "@/components/SearchEvent";
 import Link from "next/link";
 
 export default function Home() {
+  
   return (
     <>
       <main className="flex flex-col items-center pt-36 px-3 ">
@@ -16,14 +17,7 @@ export default function Home() {
           around you
         </p>
 
-        <form action="" className="w-full sm:w-[580px]">
-          <input
-            className="w-full h-16 rounded-lg px-6 bg-white/[7%] outline-none transition focus:ring-2  ring-green-700 focus:bg-white/10"
-            type="text"
-            placeholder="Search events in any city..."
-            spellCheck={false}
-          />
-        </form>
+        <SearchEvent/>
         <section className="mt-4 flex gap-x-4 text-sm text-white/50">
           <p>Popular:</p>
           <div className="flex gap-x-2">
