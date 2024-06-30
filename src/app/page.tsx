@@ -1,3 +1,4 @@
+import Heading from "@/components/Heading";
 import SearchEvent from "@/components/SearchEvent";
 import Link from "next/link";
 
@@ -6,9 +7,7 @@ export default function Home() {
   return (
     <>
       <main className="flex flex-col items-center pt-36 px-3 ">
-        <h1 className="text-3xl font-bold tracking-tight lg:text-6xl">
-          Find events around you
-        </h1>
+        <Heading text={"Find events around you"}/>
         <p className="mb-12 text-center mt-7 text-2xl lg:text-3xl opacity-75">
           Browse more than{" "}
           <span className="text-green-700 italic underline font-bold">
