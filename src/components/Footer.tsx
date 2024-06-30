@@ -16,10 +16,10 @@ export default function Footer() {
       <small className="text-xs">
         &copy; 2030 Shiv Production. All rights are reserved.
       </small>
-      <ul className="flex gap-x-3 sm:gap-x-8">
+      <ul className="flex gap-x-3 sm:gap-x-8 ">
         {routes.map((route) => (
           <li key={route.path}>
-            <Link href={route.path}>{route.name}</Link>
+            <Link className="hover:text-white/50 transition" href={route.path}>{route.name}</Link>
           </li>
         ))}
       </ul>
