@@ -8,12 +8,12 @@ type EventsPageProps = {
   };
 };
 
-
 export default async function EventsPage({ params }: EventsPageProps) {
-    const city=params.city
-    const response=await fetch(`https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`);
-    const events:EventsType[]=await response.json();
-
+  const city = params.city;
+  const response = await fetch(
+    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`
+  );
+  const events: EventsType[] = await response.json();
 
   return (
     <>
@@ -25,7 +25,7 @@ export default async function EventsPage({ params }: EventsPageProps) {
               : params.city.charAt(0).toUpperCase() + params.city.slice(1)
           }`}
         />
-        <EventsList events={events}/>
+        <EventsList events={events} />
       </main>
     </>
   );

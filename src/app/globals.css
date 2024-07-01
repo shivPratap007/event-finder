@@ -3,5 +3,8 @@
 @tailwind utilities;
 
 *::-webkit-scrollbar {
-    display: none;
+  display: none;
+}
+.state-effects {
+  @apply hover:scale-105 focus:scale-105 active:scale-[1.02] transition;
 }
