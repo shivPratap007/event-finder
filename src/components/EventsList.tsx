@@ -1,12 +1,13 @@
 import { EventsType } from "@/lib/Types";
 import EventCard from "./EventCard";
-import { sleep } from "@/lib/utils";
+import { getCityEvents, sleep } from "@/lib/utils";
+import NotFound from "@/app/not-found";
 
 export default async function EventsList({ city }: { city: string }) {
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`
-  );
-  const events: EventsType[] = await response.json();
+  const events: EventsType[] | undefined = await getCityEvents(city);
+
+  if (!events) return <NotFound/>
+
   return (
     <section className="flex flex-wrap justify-center items-center gap-7 mt-9 px-10">
       {events.map((event: EventsType) => (

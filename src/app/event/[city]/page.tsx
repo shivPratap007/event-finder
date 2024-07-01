@@ -1,17 +1,30 @@
+import NotFound from "@/app/not-found";
 import Heading from "@/components/Heading";
 import { EventType } from "@/lib/Types";
+import { Capitalize, getEvent } from "@/lib/utils";
 import Image from "next/image";
 
 type EventProps = { params: { city: string } };
 
+export async function generateMetadata({ params }: EventProps) {
+  const city = params.city;
+
+  return {
+    title: `${Capitalize(city)}`,
+  };
+}
+
 export default async function Event({ params }: EventProps) {
   const slug = params.city;
-
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events/${slug}`
-  );
-  const event: EventType = await response.json();
-
+  const event:EventType| undefined=await getEvent(slug);
+  
+  if(!event){
+    return (
+      <main className="h-[300px]">
+        <NotFound/>
+      </main>
+    )
+  }
   return (
     <main>
       <section className="relative overflow-hidden flex justify-center items-center py-14 md:py-20">

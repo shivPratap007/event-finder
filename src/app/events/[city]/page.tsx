@@ -1,9 +1,8 @@
 import EventsList from "@/components/EventsList";
 import Heading from "@/components/Heading";
-import { EventsType } from "@/lib/Types";
 import { Suspense } from "react";
 import AllEventsLoading from "./loading";
-import { Metadata } from "next";
+import { Capitalize } from "@/lib/utils";
 
 type EventsPageProps = {
   params: {
@@ -20,7 +19,7 @@ export async function generateMetadata({ params }: EventsPageProps) {
     };
   }
   return {
-    title: `Events in ${city}`,
+    title: `Events in ${Capitalize(city)}`,
   };
 }
 
