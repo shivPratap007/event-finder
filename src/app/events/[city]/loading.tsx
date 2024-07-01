@@ -1,10 +1,6 @@
-export default function Loading() {
+export default function AllEventsLoading() {
   return (
     <>
-      <main className="flex flex-col items-center py-24 px-[20px]">
-        <h1 className="tracking-tight">
-          <Skeleton className="w-[104px] max-w-full" />
-        </h1>
         <section className="flex flex-wrap justify-center items-center gap-7 mt-9 px-10">
           <a>
             <section className="flex flex-col flex-1 basis-80 h-[300px] relative max-w-[500px]">
@@ -463,7 +459,6 @@ export default function Loading() {
             </section>
           </a>
         </section>
-      </main>
     </>
   );
 }

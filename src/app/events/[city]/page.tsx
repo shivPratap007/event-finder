@@ -1,6 +1,9 @@
 import EventsList from "@/components/EventsList";
 import Heading from "@/components/Heading";
 import { EventsType } from "@/lib/Types";
+import { Suspense } from "react";
+import AllEventsLoading from "./loading";
+import { Metadata } from "next";
 
 type EventsPageProps = {
   params: {
@@ -8,24 +11,31 @@ type EventsPageProps = {
   };
 };
 
-export default async function EventsPage({ params }: EventsPageProps) {
+export async function generateMetadata({ params }: EventsPageProps) {
   const city = params.city;
-  const response = await fetch(
-    `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`
-  );
-  const events: EventsType[] = await response.json();
+  console.log(city);
+  if (city === "all") {
+    return {
+      title: `All Events`,
+    };
+  }
+  return {
+    title: `Events in ${city}`,
+  };
+}
 
+export default async function EventsPage({ params }: EventsPageProps) {
   return (
     <>
       <main className="flex flex-col items-center py-24 px-[20px] ">
         <Heading
-          text={`Events in ${
-            params.city === "all"
-              ? "All"
-              : params.city.charAt(0).toUpperCase() + params.city.slice(1)
+          text={`${
+            params.city === "all" ? "All Events" : `Events in ${params.city}`
           }`}
         />
-        <EventsList events={events} />
+        <Suspense fallback={<AllEventsLoading />}>
+          <EventsList city={params.city} />
+        </Suspense>
       </main>
     </>
   );
