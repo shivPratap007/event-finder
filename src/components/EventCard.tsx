@@ -2,6 +2,7 @@ import { EventsType } from "@/lib/Types";
 import Image from "next/image";
 import Link from "next/link";
 
+
 export default function EventCard({ event }: { event: EventsType }) {
   return (
     <Link href={`/event/${event.slug}`}>

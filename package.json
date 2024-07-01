@@ -8,12 +8,18 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "dependencies": {
+    "@prisma/client": "^5.16.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.12",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
+    "sqlite3": "^5.1.7",
+    "ts-node": "^10.9.2",
     "tw-merge": "^0.0.1-alpha.3"
   },
   "devDependencies": {
@@ -23,6 +29,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
+    "prisma": "^5.16.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
