@@ -12,7 +12,8 @@ export default async function Pagination({
 }) {
   const events = await getAllEventsOfCity(city);
   const eventLength = events?.length;
-  const totalPages = Math.floor(eventLength! / PAGE_SIZE) + 1;
+  const totalPages = Math.ceil(eventLength! / PAGE_SIZE);
+ 
 
   if (!events) return null;
   return (

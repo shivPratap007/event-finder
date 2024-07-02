@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import AllEventsLoading from "./loading";
 import { Capitalize } from "@/lib/utils";
 import { z } from "zod";
+import NotFound from "@/app/not-found";
 
 type EventsPageProps = {
   params: {
@@ -35,8 +36,10 @@ export default async function EventsPage({
   params,
   searchParams,
 }: EventsPageProps) {
-  console.log(searchParams);
-  pageNumberSchema.safeParse(searchParams.page)
+  const parsedPage=pageNumberSchema.safeParse(searchParams.page)
+  if(!parsedPage.success){
+    return <NotFound text={"Invalid page no."}/>
+  }
   const page = searchParams.page ||1;
   return (
     <>

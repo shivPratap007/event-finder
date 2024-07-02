@@ -21,7 +21,7 @@ export default async function Event({ params }: EventProps) {
   if (!event) {
     return (
       <main className="h-[300px]">
-        <NotFound />
+        <NotFound text={"No event found"}/>
       </main>
     );
   }

@@ -12,6 +12,7 @@ export default function Logo() {
         className="rounded-full"
         height={40}
         width={40}
+        priority={true}
       ></Image>
     </Link>
   );

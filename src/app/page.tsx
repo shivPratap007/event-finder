@@ -20,14 +20,14 @@ export default function Home() {
         <section className="mt-4 flex gap-x-4 text-sm text-white/50">
           <p>Popular:</p>
           <div className="flex gap-x-2">
-            <Link className="hover:text-white" href={"/events/delhi"}>
-              Delhi
+            <Link className="hover:text-white" href={"/events/austin"}>
+              Austin
             </Link>
             <Link
               className="hover:text-white transition"
-              href={"/events/mumbai"}
+              href={"/events/seattle"}
             >
-              Mumbai
+              Seattle
             </Link>
           </div>
         </section>
