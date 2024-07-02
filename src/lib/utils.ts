@@ -2,6 +2,8 @@ import clsx, { ClassValue } from "clsx";
 import { Metadata } from "next";
 import { twMerge } from "tw-merge";
 import { EventType, EventsType } from "./Types";
+import { Event, PrismaClient } from "@prisma/client";
+import prisma from "./db";
 export function cn(...classes: ClassValue[]) {
   return twMerge(clsx(classes));
 }
@@ -19,10 +21,20 @@ export function Capitalize(text: string): string {
 
 export async function getCityEvents(city: string) {
   try {
-    const response = await fetch(
-      `https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`
-    );
-    const events: EventsType[] = await response.json();
+    city = Capitalize(city);
+    if (city === "All") {
+      const allEvents = await prisma.event.findMany();
+      if(allEvents.length===0) return null;
+      return allEvents;
+    }
+    const events = await prisma.event.findMany({
+      where: {
+        city: {
+          equals: city,
+        },
+      },
+    });
+    if (events.length == 0) return null;
     return events;
   } catch (error) {
     console.log(error);
@@ -30,10 +42,11 @@ export async function getCityEvents(city: string) {
 }
 export async function getEvent(city: string) {
   try {
-    const response = await fetch(
-      `https://bytegrad.com/course-assets/projects/evento/api/events/${city}`
-    );
-    const event: EventType = await response.json();
+    const event = await prisma.event.findUnique({
+      where: {
+        slug: city,
+      },
+    });
     return event;
   } catch (error) {
     console.log(error);

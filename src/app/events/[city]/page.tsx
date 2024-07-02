@@ -12,7 +12,6 @@ type EventsPageProps = {
 
 export async function generateMetadata({ params }: EventsPageProps) {
   const city = params.city;
-  console.log(city);
   if (city === "all") {
     return {
       title: `All Events`,
@@ -29,7 +28,7 @@ export default async function EventsPage({ params }: EventsPageProps) {
       <main className="flex flex-col items-center py-24 px-[20px] ">
         <Heading
           text={`${
-            params.city === "all" ? "All Events" : `Events in ${params.city}`
+            params.city === "all" ? "All Events" : `Events in ${Capitalize(params.city)}`
           }`}
         />
         <Suspense fallback={<AllEventsLoading />}>

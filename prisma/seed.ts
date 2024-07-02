@@ -250,6 +250,58 @@ const events = [
     description:
       "Experience a blend of dance styles from around the world. Participate in dance workshops, watch electrifying performances, and dance the night away.",
   },
+  {
+    id: 20,
+    name: "Digital Art Symposium",
+    slug: "digital-art-symposium",
+    city: "Mumbai",
+    location: "Mumbai Art Gallery",
+    date: "2030-11-01T00:00:00.000Z",
+    organizerName: "Tech Creatives Collective",
+    imageUrl:
+      "https://images.unsplash.com/photo-1642178225043-f299072af862?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+    description:
+      "Discover the intersection of technology and art. Experience digital art installations, attend VR workshops, and meet digital artists pushing creative boundaries.",
+  },
+  {
+    id: 21,
+    name: "Tech Innovators Meetup",
+    slug: "tech-innovators-meetup",
+    city: "Bangalore",
+    location: "Bangalore Tech Park",
+    date: "2031-03-15T00:00:00.000Z",
+    organizerName: "Innovation Hub",
+    imageUrl:
+      "https://images.unsplash.com/photo-1642178225043-f299072af862?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1",
+    description:
+      "Network with tech innovators and entrepreneurs. Explore cutting-edge technologies and collaborate on groundbreaking ideas.",
+  },
+  {
+    id: 22,
+    name: "Cultural Festival",
+    slug: "cultural-festival",
+    city: "Jaipur",
+    location: "Jaipur Cultural Center",
+    date: "2031-07-20T00:00:00.000Z",
+    organizerName: "Artistic Vibes Society",
+    imageUrl:
+      "https://images.unsplash.com/photo-1642178225043-f299072af862?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+    description:
+      "Celebrate diversity through cultural performances, traditional arts, and culinary delights.",
+  },
+  {
+    id: 24,
+    name: "Art Exhibition",
+    slug: "art-exhibition",
+    city: "Chennai",
+    location: "Chennai Art Museum",
+    date: "2031-10-15T00:00:00.000Z",
+    organizerName: "Creative Minds Society",
+    imageUrl:
+      "https://images.unsplash.com/photo-1642178225043-f299072af862?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+    description:
+      "Explore diverse artworks from local and international artists. Engage in art talks and workshops.",
+  },
 ];
 
 async function main() {
