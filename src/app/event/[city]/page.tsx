@@ -16,14 +16,14 @@ export async function generateMetadata({ params }: EventProps) {
 
 export default async function Event({ params }: EventProps) {
   const slug = params.city;
-  const event:EventType| undefined=await getEvent(slug);
-  
-  if(!event){
+  const event: EventType | null | undefined = await getEvent(slug);
+
+  if (!event) {
     return (
       <main className="h-[300px]">
-        <NotFound/>
+        <NotFound />
       </main>
-    )
+    );
   }
   return (
     <main>

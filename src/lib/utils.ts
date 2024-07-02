@@ -4,6 +4,8 @@ import { twMerge } from "tw-merge";
 import { EventType, EventsType } from "./Types";
 import { Event, PrismaClient } from "@prisma/client";
 import prisma from "./db";
+import Link from "next/link";
+import { PAGE_SIZE } from "./consts";
 export function cn(...classes: ClassValue[]) {
   return twMerge(clsx(classes));
 }
@@ -19,22 +21,36 @@ export function Capitalize(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-export async function getCityEvents(city: string) {
+export async function getCityEvents(city: string, page: number = 1) {
   try {
     city = Capitalize(city);
-    if (city === "All") {
-      const allEvents = await prisma.event.findMany();
-      if(allEvents.length===0) return null;
-      return allEvents;
-    }
+
     const events = await prisma.event.findMany({
       where: {
-        city: {
-          equals: city,
-        },
+        city: city === "All" ? undefined : city,
+      },
+      orderBy: {
+        date: "asc",
+      },
+      take: PAGE_SIZE,
+      skip: (page - 1) * 6,
+    });
+    if (events.length == 0) return undefined;
+    return events;
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function getAllEventsOfCity(city: string) {
+  try {
+    city = Capitalize(city);
+
+    const events = await prisma.event.findMany({
+      where: {
+        city: city === "All" ? undefined : city,
       },
     });
-    if (events.length == 0) return null;
+    if (events.length == 0) return undefined;
     return events;
   } catch (error) {
     console.log(error);
@@ -52,3 +68,5 @@ export async function getEvent(city: string) {
     console.log(error);
   }
 }
+
+
