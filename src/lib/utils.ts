@@ -1,10 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import { Metadata } from "next";
 import { twMerge } from "tw-merge";
-import { EventType, EventsType } from "./Types";
-import { Event, PrismaClient } from "@prisma/client";
 import prisma from "./db";
-import Link from "next/link";
 import { PAGE_SIZE } from "./consts";
 export function cn(...classes: ClassValue[]) {
   return twMerge(clsx(classes));
